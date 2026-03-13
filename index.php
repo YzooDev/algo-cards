@@ -14,7 +14,6 @@ $tabData = [];
 //------------------------------------------------------
 // 5) Ajouter à $tabData les constantes $USERS_HUMAN, $USERS_PET et $USERS_XENO
 array_push($tabData, $USERS_HUMAN, $USERS_PET, $USERS_XENO);
-// print_r($tabData);
 
 //------------------------------------------------------
 // 6) Créer la fonction afficherHumain() qui prendra un tableau associatif en paramètre
@@ -57,29 +56,24 @@ function profil($array) {
     // 13) Faire en sorte que la fonction profil() parcourt chaque tableau associatif du tableau en paramètre.
     $display = 0;
     for ($i=0; $i < sizeof($array); $i++) { 
-        // AVEC IF
-        // if ($array[$i]["type"] == "humain") {
-        //     $display = afficherHumain($array[$i]);
-        // } else if ("type" == "animal de compagnie"){
-        //     $display = afficherAnimal($array[$i]);
-        // } else if ("type" == "Xeno") {
-        //     $display = afficherXeno($array[$i]);
-        // }
-
-        // AVEC SWITCH
-        switch($array[$i]["type"]){
-        case "humain":
+        if ($array[$i]["type"] == "humain") {
             $display = afficherHumain($array[$i]);
-            break;
-        case "animal de compagnie":
+        } else if ($array[$i]["type"] == "animal de compagnie") {
             $display = afficherAnimal($array[$i]);
-            break;
-        case "Xeno":
+        } else if ($array[$i]["type"] == "Xeno") {
             $display = afficherXeno($array[$i]);
-            break;
-        }
+        } else {
+            $display = "<article style= 'border-bottom : 3px solid black '><p>Type de Profil non Existant</p></article>";
+            echo $display;
+        };
     }
     return $display;
+}
+
+function profilAll($array) {
+    for ($i=0; $i < sizeof($array); $i++) { 
+        profil($array[$i]);
+    }
 }
 ?>
     <main>
@@ -87,5 +81,8 @@ function profil($array) {
         <?php afficherAnimal($USERS_PET[0]) ?>
         <?php afficherXeno($USERS_XENO[0]) ?>
         <?php profil($USERS_HUMAN) ?>
+        <?php profil($USERS_PET) ?>
+        <?php profil($USERS_XENO) ?>
+        <?php profilAll($tabData) ?>
     </main>
 <?php include_once "./header.php" ;?>
