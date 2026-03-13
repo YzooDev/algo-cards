@@ -42,9 +42,24 @@ function afficherAnimal($tableau) {
     };
 };
 
+//------------------------------------------------------
+// 10) Créer la fonction afficherXeno() qui prendra un tableau associatif en paramètre.
+
+function afficherXeno($tableau) {
+    for ($i=0 ; $i < sizeof($tableau); $i++) { 
+        echo "<article style= 'border-bottom : 3px solid black '>
+            <h2>nom : ".$tableau[$i]["name"]."</h2>
+            <p>espece : ".$tableau[$i]["espece"]."</p>
+            <p>age : ".$tableau[$i]["age"]." ans</p>
+            <p>niveau de menace: ".$tableau[$i]["menace"]."</p>
+        </article>";
+    };
+};
+
 ?>
     <main>
         <?php afficherHumain($USERS_HUMAN) ?>
         <?php afficherAnimal($USERS_PET) ?>
+        <?php afficherXeno($USERS_XENO) ?>
     </main>
 <?php include_once "./header.php" ;?>
