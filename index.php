@@ -28,8 +28,23 @@ function afficherHumain($tableau) {
     };
 };
 
+//------------------------------------------------------
+// 8) Créer la fonction afficherAnimal() qui prendra un tableau associatif en paramètre.
+
+function afficherAnimal($tableau) {
+    for ($i=0 ; $i < sizeof($tableau); $i++) { 
+        echo "<article style= 'border-bottom : 3px solid black '>
+            <h2>nom : ".$tableau[$i]["name"]."</h2>
+            <p>espece : ".$tableau[$i]["espece"]."</p>
+            <p>age : ".$tableau[$i]["age"]." ans</p>
+            <p>propriétaire : ".$tableau[$i]["propriétaire"]."</p>
+        </article>";
+    };
+};
+
 ?>
     <main>
         <?php afficherHumain($USERS_HUMAN) ?>
+        <?php afficherAnimal($USERS_PET) ?>
     </main>
 <?php include_once "./header.php" ;?>
